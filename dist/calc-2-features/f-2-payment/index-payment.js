@@ -8,6 +8,6 @@ const addCargo_1 = require("./controllers/addCargo");
 const addCharacteristicsCargo_1 = require("./controllers/addCharacteristicsCargo");
 const payment = express_1.default.Router();
 payment.post('/', addCargo_1.addPayment);
-payment.put('/', addCharacteristicsCargo_1.addCharacteristicsCargo);
+payment.put('/packing', addCharacteristicsCargo_1.addCharacteristicsCargo);
 exports.default = payment;
 //# sourceMappingURL=index-payment.js.map

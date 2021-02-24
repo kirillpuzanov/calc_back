@@ -8,7 +8,7 @@ const payment = express.Router();
 
 
 payment.post('/', addPayment);
-payment.put('/', addCharacteristicsCargo);
+payment.put('/packing', addCharacteristicsCargo);
 
 
 export default payment

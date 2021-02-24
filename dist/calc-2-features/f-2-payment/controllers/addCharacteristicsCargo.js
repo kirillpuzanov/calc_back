@@ -27,4 +27,5 @@ exports.addCharacteristicsCargo = (req, res) => __awaiter(void 0, void 0, void 0
         res.sendStatus(500);
     }
 });
+//test commit
 //# sourceMappingURL=addCharacteristicsCargo.js.map

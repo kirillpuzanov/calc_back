@@ -7,23 +7,16 @@ const express_1 = __importDefault(require("express"));
 const config_1 = require("./calc-1-main/config");
 const cors_1 = __importDefault(require("cors"));
 const db_1 = require("./calc-1-main/db");
-const index_payment_1 = __importDefault(require("./calc-2-features/f-2-payment/index-payment"));
+const routes_1 = require("./calc-1-main/routes");
 const app = express_1.default();
 app.use(cors_1.default());
 app.use(express_1.default.json());
-// 'routes'
-// app.use('/users', users)
-app.use('/', index_payment_1.default);
-app.use('/packing', index_payment_1.default);
+routes_1.routes(app);
 // подключаем БД
 db_1.startDB();
 // слушаем порт
 app.listen(config_1.PORT, () => {
     console.log(`server started at http://localhost:${config_1.PORT}`);
-});
-// * '?' PNF 404
-app.use((req, res) => {
-    res.sendStatus(404);
 });
 // Имя Описание
 // $eq Соответствует значениям, которые равны указанному значению.

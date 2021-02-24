@@ -1,19 +1,17 @@
 import express from 'express';
-import { PORT} from './calc-1-main/config';
+import {PORT} from './calc-1-main/config';
 import cors from 'cors';
 import {startDB} from './calc-1-main/db';
-import payment from './calc-2-features/f-2-payment/index-payment';
+import {routes} from './calc-1-main/routes';
 
 
 const app = express();
 
 app.use(cors())
 app.use(express.json())
+routes(app);
 
-// 'routes'
-// app.use('/users', users)
-app.use('/', payment )
-app.use('/packing', payment )
+
 
 
 
@@ -25,10 +23,7 @@ app.listen( PORT, () => {
     console.log( `server started at http://localhost:${ PORT }` );
 } );
 
-// * '?' PNF 404
-app.use((req, res) => {
-    res.sendStatus(404)
-})
+
 
 
 
