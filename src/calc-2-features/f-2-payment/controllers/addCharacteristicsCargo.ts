@@ -13,3 +13,4 @@ export const addCharacteristicsCargo = async (req: Request, res: Response) => {
         res.sendStatus(500)
     }
 }
+//test commit
