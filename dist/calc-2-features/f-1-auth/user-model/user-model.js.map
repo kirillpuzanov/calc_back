@@ -1,0 +1,1 @@
+{"version":3,"file":"user-model.js","sourceRoot":"","sources":["../../../../src/calc-2-features/f-1-auth/user-model/user-model.ts"],"names":[],"mappings":";;AAAA,uCAAiD;AAOjD,MAAM,UAAU,GAAW,IAAI,iBAAM,CAAC;IAClC,IAAI,EAAE;QACF,IAAI,EAAE,MAAM;QACZ,OAAO,EAAE,IAAI;KAChB;CACJ,CAAC,CAAA;AACF,MAAM,QAAQ,GAAG,gBAAK,CAAQ,UAAU,EAAE,UAAU,CAAC,CAAA;AACrD,kBAAe,QAAQ,CAAA"}
