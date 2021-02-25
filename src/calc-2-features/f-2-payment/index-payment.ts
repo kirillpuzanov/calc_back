@@ -1,7 +1,6 @@
 import express from 'express';
-import {addPayment} from './controllers/addCargo';
 import {addCharacteristicsCargo} from './controllers/addCharacteristicsCargo';
-
+import {addPayment} from './controllers/addPayment';
 
 
 const payment = express.Router();
@@ -12,3 +11,4 @@ payment.put('/packing', addCharacteristicsCargo);
 
 
 export default payment
+

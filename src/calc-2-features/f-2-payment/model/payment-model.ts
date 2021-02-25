@@ -4,7 +4,7 @@ import  {Schema, Document, model} from 'mongoose';
 export interface IPayment extends Document {
     // _id: mongoose.Types.ObjectId
     // user_name: mongoose.Types.ObjectId
-    loadPlace: string
+    loadPlace: loadPlaceType
     packagingCargo: PackagingItemType[]
     withPallet: string
     totalCargoValue: TotalCargoValueType
@@ -78,7 +78,7 @@ const PaymentSchema: Schema = new Schema(
 const PaymentModel = model<IPayment>('payment', PaymentSchema)
 export default PaymentModel
 
-
+export type loadPlaceType = 'Грузовик' | 'Контейнер'
 export type PackagingItemType = {
     id: string
     img: string
