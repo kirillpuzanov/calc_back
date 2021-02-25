@@ -5,13 +5,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const config_1 = require("./calc-1-main/config");
-const cors_1 = __importDefault(require("cors"));
 const db_1 = require("./calc-1-main/db");
 const routes_1 = require("./calc-1-main/routes");
+const cookie_1 = require("./calc-1-main/cookie");
 const app = express_1.default();
-app.use(cors_1.default());
-app.use(express_1.default.json());
+cookie_1.cookie(app);
 routes_1.routes(app);
+app.use(express_1.default.json());
 // подключаем БД
 db_1.startDB();
 // слушаем порт

@@ -1,18 +1,15 @@
 import express from 'express';
 import {PORT} from './calc-1-main/config';
-import cors from 'cors';
 import {startDB} from './calc-1-main/db';
 import {routes} from './calc-1-main/routes';
+import {cookie} from './calc-1-main/cookie';
 
 
 const app = express();
 
-app.use(cors())
-app.use(express.json())
+cookie(app)
 routes(app);
-
-
-
+app.use(express.json())
 
 
 // подключаем БД

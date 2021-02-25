@@ -6,7 +6,7 @@ import {addPayment} from './controllers/addPayment';
 const payment = express.Router();
 
 
-payment.post('/', addPayment);
+payment.post('/s_payment', addPayment);
 payment.put('/packing', addCharacteristicsCargo);
 
 

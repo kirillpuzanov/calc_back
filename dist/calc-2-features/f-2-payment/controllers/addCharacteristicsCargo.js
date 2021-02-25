@@ -14,8 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addCharacteristicsCargo = void 0;
 const payment_model_1 = __importDefault(require("../model/payment-model"));
-const success_result_1 = require("../../../calc-1-main/halpers/success-result");
-const error_result_1 = require("../../../calc-1-main/halpers/error-result");
+const success_result_1 = require("../../../calc-1-main/halpers/statuses/success-result");
+const error_result_1 = require("../../../calc-1-main/halpers/statuses/error-result");
 exports.addCharacteristicsCargo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const searchIdPayment = req.body.searchIdPayment;
     const newPackagingCargo = req.body.packagingCargo;

@@ -1,7 +1,7 @@
 import {Request, Response} from 'express';
 import PaymentModel, {IPayment, loadPlaceType} from '../model/payment-model';
-import {errorStatus400, errorStatus500} from '../../../calc-1-main/halpers/error-result';
-import {successResult} from '../../../calc-1-main/halpers/success-result';
+import {errorStatus400, errorStatus500} from '../../../calc-1-main/halpers/statuses/error-result';
+import {successResult} from '../../../calc-1-main/halpers/statuses/success-result';
 
 
 export const addPayment = async (req: Request, res: Response) => {
