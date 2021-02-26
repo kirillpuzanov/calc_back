@@ -7,9 +7,10 @@ export const emailValidator = (email: string): boolean => emailRegExp.test(email
 
 export const passwordValidator = (password: string): boolean => password.length > 7; // true - valid
 
-export const validateAuth = (req: Request, res: Response, inInfo: string): boolean => {
-    const isEmailValid = emailValidator(req.body.email);
-    const isPassValid = passwordValidator(req.body.password);
+export const validateAuth = (req:Request,res: Response): boolean => {
+    const {email, password} = req.body;
+    const isEmailValid = emailValidator(email);
+    const isPassValid = passwordValidator(password);
 
     if (!isEmailValid || !isPassValid) {
         errorStatus400(res, 'not valid email/password', 400,
@@ -17,3 +18,4 @@ export const validateAuth = (req: Request, res: Response, inInfo: string): boole
         return false;
     } else return true
 };
+

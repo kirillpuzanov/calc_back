@@ -18,8 +18,11 @@ export const addPayment = async (req: Request, res: Response) => {
             palletParam: {},
             transports: [],
         })
-        if (!newPayment) errorStatus400(res, '11', 400, loadPlace)
-        else successResult(res, 'create payment/add loadPlace success!', 200, loadPlace)
+        if (!newPayment) {
+            errorStatus400(res, '11', 400, loadPlace)
+        } else {
+            successResult(res, 'create payment/add loadPlace success!', 200, loadPlace);
+        }
     } catch (err) {
         errorStatus500(res, err, 'in addPayment/newPayment')
     }

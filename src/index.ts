@@ -2,15 +2,23 @@ import express from 'express';
 import {PORT} from './calc-1-main/config';
 import {startDB} from './calc-1-main/db';
 import {routes} from './calc-1-main/routes';
-import {cookie} from './calc-1-main/cookie';
+import {appUse} from './calc-1-main/appUse';
+import bodyParser from 'body-parser';
 
 
 const app = express();
 
-cookie(app)
-routes(app);
-app.use(express.json())
+// parse application/json
+app.use(bodyParser.json({limit: "7mb"}));
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({limit: "7mb", extended: false}));
 
+
+// appUse=> cookie, bodyparser, log middleware
+appUse(app)
+
+// основные роуты
+routes(app);
 
 // подключаем БД
 startDB()

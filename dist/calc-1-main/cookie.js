@@ -11,8 +11,8 @@ exports.cookie = (app) => {
     app.use(cors_1.default(corsOptions));
     app.use(cookie_parser_1.default());
 };
-exports.cookieSettings = { sameSite: "none", secure: true };
+exports.cookieSettings = { sameSite: 'none', secure: true };
 exports.resCookie = (res, user) => {
-    return res.cookie("token", user.token, Object.assign(Object.assign({}, exports.cookieSettings), { expires: new Date(user.tokenDeathTime || 0) }));
+    return res.cookie('token', user.token, Object.assign(Object.assign({}, exports.cookieSettings), { expires: new Date(user.tokenDeathTime || 0) }));
 };
 //# sourceMappingURL=cookie.js.map

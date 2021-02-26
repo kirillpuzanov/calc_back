@@ -9,8 +9,7 @@ const index_auth_1 = __importDefault(require("../calc-2-features/f-1-auth/index-
 exports.routes = (app) => {
     //  app.use('/users', users)
     app.use('/auth', index_auth_1.default);
-    app.use('/s_payment', index_payment_1.default);
-    app.use('/packing', index_payment_1.default);
+    app.use('/', index_payment_1.default);
     // * '?' PNF 404
     app.use((req, res) => {
         console.log("Bad request, url: ", req.method, req.url);

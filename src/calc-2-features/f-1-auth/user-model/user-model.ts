@@ -19,6 +19,7 @@ export interface IUser extends Document {
 
     created: Date;
     updated: Date;
+    _doc: object
 }
 
 

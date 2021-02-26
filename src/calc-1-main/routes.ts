@@ -7,8 +7,7 @@ export const routes = (app: Express) => {
 //  app.use('/users', users)
 
     app.use('/auth', auth)
-    app.use('/s_payment', payment)
-    app.use('/packing', payment)
+    app.use('/', payment)
 
     // * '?' PNF 404
     app.use((req: Request, res: Response) => {

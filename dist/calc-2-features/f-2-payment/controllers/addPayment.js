@@ -30,10 +30,12 @@ exports.addPayment = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             palletParam: {},
             transports: [],
         });
-        if (!newPayment)
+        if (!newPayment) {
             error_result_1.errorStatus400(res, '11', 400, loadPlace);
-        else
+        }
+        else {
             success_result_1.successResult(res, 'create payment/add loadPlace success!', 200, loadPlace);
+        }
     }
     catch (err) {
         error_result_1.errorStatus500(res, err, 'in addPayment/newPayment');

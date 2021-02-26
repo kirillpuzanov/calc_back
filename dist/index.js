@@ -7,11 +7,17 @@ const express_1 = __importDefault(require("express"));
 const config_1 = require("./calc-1-main/config");
 const db_1 = require("./calc-1-main/db");
 const routes_1 = require("./calc-1-main/routes");
-const cookie_1 = require("./calc-1-main/cookie");
+const appUse_1 = require("./calc-1-main/appUse");
+const body_parser_1 = __importDefault(require("body-parser"));
 const app = express_1.default();
-cookie_1.cookie(app);
+// parse application/json
+app.use(body_parser_1.default.json({ limit: "7mb" }));
+// parse application/x-www-form-urlencoded
+app.use(body_parser_1.default.urlencoded({ limit: "7mb", extended: false }));
+// appUse=> cookie, bodyparser, log middleware
+appUse_1.appUse(app);
+// основные роуты
 routes_1.routes(app);
-app.use(express_1.default.json());
 // подключаем БД
 db_1.startDB();
 // слушаем порт
