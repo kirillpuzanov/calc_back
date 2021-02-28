@@ -6,7 +6,7 @@ import {validateAuth} from '../../../calc-1-main/halpers/validators';
 
 
 export const registration = async (req: Request, res: Response) => {
-    const {email, password} = req.body;
+    const {email,name, password} = req.body;
 
     if (validateAuth(req,res, 'registration')) {
         try {
@@ -21,7 +21,7 @@ export const registration = async (req: Request, res: Response) => {
                         rememberMe: false,
                         isAdmin: false,
 
-                        name: email,
+                        name,
                         verified: false,
 
                         created: new Date(),

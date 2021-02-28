@@ -11,12 +11,12 @@ import {registration} from './controllers/registration';
 
 const auth = express.Router();
 
-auth.post('/login', login)//
-auth.post('/register', registration)//
-auth.post('/forgot', recoveryPassword) //
-auth.post('/newPass', setNewPassword)
-auth.post('/me', findUserByToken(getMe))//
+auth.post('/login', login)//+
+auth.post('/register', registration)//+
+auth.post('/forgot', recoveryPassword) //+
+auth.post('/newPass', setNewPassword) // не проверял
+auth.post('/me', findUserByToken(getMe))//?
 auth.put('/me', findUserByToken(updateUser))
-auth.delete('/me', findUserByToken(logout)) //
+auth.delete('/me', findUserByToken(logout)) //?
 
 export default auth

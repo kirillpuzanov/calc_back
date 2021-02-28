@@ -27,6 +27,7 @@ exports.findUserByToken = (f) => (req, res) => __awaiter(void 0, void 0, void 0,
         }
         else {
             // иначе (если все есть ) обновляем токкен и его срок...
+            //todo нужно ди обновлять токен?? или достаточно только срок жизни токена ??
             const [token, tokenDeathTime] = generateTokken_1.updateGenerateToken(user._id, user.rememberMe);
             try {
                 const newUser = yield user_model_1.default.findByIdAndUpdate(user._id, { token, tokenDeathTime }, { new: true }).exec();

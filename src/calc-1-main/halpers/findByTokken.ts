@@ -16,6 +16,7 @@ export const findUserByToken = (
             errorStatus400(res, 'you are not authorized', 401)
         } else {
             // иначе (если все есть ) обновляем токкен и его срок...
+            //todo нужно ди обновлять токен?? или достаточно только срок жизни токена ??
             const [token, tokenDeathTime] = updateGenerateToken(user._id, user.rememberMe);
             try {
                 const newUser: IUser | null = await User.findByIdAndUpdate(

@@ -20,10 +20,9 @@ appUse_1.appUse(app);
 routes_1.routes(app);
 // подключаем БД
 db_1.startDB();
-klk;
 // слушаем порт
-app.listen(config_1.PORT, () => {
-    console.log(`server started at http://localhost:${config_1.PORT}`);
+app.listen(config_1._PORT, () => {
+    console.log(`server started at http://localhost:${config_1._PORT}`);
 });
 // Имя Описание
 // $eq Соответствует значениям, которые равны указанному значению.
