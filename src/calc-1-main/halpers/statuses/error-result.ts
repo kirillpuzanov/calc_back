@@ -1,10 +1,11 @@
 import {Response} from 'express';
 
-export const errorStatus400 = (res: Response, error: string, statusCodeError: number, input_data?: any) => {
+export const errorStatus400 = (res: Response, error: string, statusCodeError: number, input_data?: any,inPlace?:string) => {
     res.status(statusCodeError).json({
         error: error,
         statusCode: statusCodeError,
-        input_data: input_data
+        input_data,
+        inPlace
     })
 }
 

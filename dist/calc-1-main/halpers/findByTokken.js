@@ -17,7 +17,7 @@ const user_model_1 = __importDefault(require("../../calc-2-features/f-1-auth/use
 const error_result_1 = require("./statuses/error-result");
 const generateTokken_1 = require("./generateTokken");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-exports.findUserByToken = () => (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.findUserByToken = (f) => (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const decodedToken = jsonwebtoken_1.default.verify(req.cookies.token, process.env.SECRET_KEY);
     try {
         const user = yield user_model_1.default.findOne({ token: decodedToken.id }).exec();
@@ -34,7 +34,9 @@ exports.findUserByToken = () => (req, res, next) => __awaiter(void 0, void 0, vo
                 if (!newUser) {
                     error_result_1.errorStatus500(res, 'not updated, database not responding', 'User.findByIdAndUpdate');
                 }
-                next();
+                else {
+                    f(req, res, newUser._doc);
+                }
             }
             catch (e) {
                 error_result_1.errorStatus500(res, 'not updated, back has broken', '/findUserByToken/User.findOne');

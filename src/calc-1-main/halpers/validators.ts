@@ -7,14 +7,14 @@ export const emailValidator = (email: string): boolean => emailRegExp.test(email
 
 export const passwordValidator = (password: string): boolean => password.length > 7; // true - valid
 
-export const validateAuth = (req:Request,res: Response): boolean => {
+export const validateAuth = (req:Request,res: Response, inPlace?:string): boolean => {
     const {email, password} = req.body;
     const isEmailValid = emailValidator(email);
     const isPassValid = passwordValidator(password);
 
     if (!isEmailValid || !isPassValid) {
         errorStatus400(res, 'not valid email/password', 400,
-            {passwordRegExp: 'Password must be more than 7 characters...'})
+            {passwordRegExp: 'Password must be more than 7 characters...'}, inPlace)
         return false;
     } else return true
 };

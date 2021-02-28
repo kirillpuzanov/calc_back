@@ -2,7 +2,7 @@ import {IUser} from '../user-model/user-model';
 import {resCookie} from '../../../calc-1-main/cookie';
 import {Request, Response} from "express";
 
-export const getMe = (res: Response, req: Request,user: IUser) => {
+export const getMe = async (req: Request, res: Response,user: IUser) => {
 
     const body: any = {...user};
 

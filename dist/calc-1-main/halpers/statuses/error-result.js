@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.errorStatus500 = exports.errorStatus400 = void 0;
-exports.errorStatus400 = (res, error, statusCodeError, input_data) => {
+exports.errorStatus400 = (res, error, statusCodeError, input_data, inPlace) => {
     res.status(statusCodeError).json({
         error: error,
         statusCode: statusCodeError,
-        input_data: input_data
+        input_data,
+        inPlace
     });
 };
 exports.errorStatus500 = (res, error, inPlace) => {

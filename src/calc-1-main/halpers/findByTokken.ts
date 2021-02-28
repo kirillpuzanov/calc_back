@@ -1,10 +1,12 @@
 import User, {IUser} from '../../calc-2-features/f-1-auth/user-model/user-model';
-import {NextFunction, Request, Response} from 'express';
+import {Request, Response} from 'express';
 import {errorStatus400, errorStatus500} from './statuses/error-result';
 import {updateGenerateToken} from './generateTokken';
 import jsonwebtoken from 'jsonwebtoken';
 
-export const findUserByToken = () => async (req: Request, res: Response, next: NextFunction) => {
+export const findUserByToken = (
+    f: (req: Request, res: Response, user: IUser) => void) => async (req: Request, res: Response) => {
+
     const decodedToken = jsonwebtoken.verify(req.cookies.token, process.env.SECRET_KEY as string) as { id: string };
 
     try {
@@ -24,8 +26,9 @@ export const findUserByToken = () => async (req: Request, res: Response, next: N
                 // если данные юзера не обновились в БД...
                 if (!newUser) {
                     errorStatus500(res, 'not updated, database not responding', 'User.findByIdAndUpdate')
+                } else {
+                    f(req, res, newUser._doc as IUser)
                 }
-                next()
             } catch (e) {
                 errorStatus500(res, 'not updated, back has broken', '/findUserByToken/User.findOne')
             }

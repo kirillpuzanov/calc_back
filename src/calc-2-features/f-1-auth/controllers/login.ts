@@ -33,7 +33,7 @@ export const login = async (req: Request, res: Response) => {
                     if (!newUser) {
                         errorStatus500(res, 'net update, error bd/server', 'logIn/User.findByIdAndUpdate')
                     } else {
-                        await getMe(res, req,newUser._doc as IUser)
+                        await getMe(req, res,newUser._doc as IUser)
                     }
                 } catch (e) {
                     errorStatus500(res, 'error server/DB', 'loginUser/findByIdAndUpdate')

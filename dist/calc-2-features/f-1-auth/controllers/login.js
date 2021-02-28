@@ -43,7 +43,7 @@ exports.login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                         error_result_1.errorStatus500(res, 'net update, error bd/server', 'logIn/User.findByIdAndUpdate');
                     }
                     else {
-                        yield getMe_1.getMe(res, req, newUser._doc);
+                        yield getMe_1.getMe(req, res, newUser._doc);
                     }
                 }
                 catch (e) {

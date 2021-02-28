@@ -1,5 +1,5 @@
 import express from 'express';
-import {PORT} from './calc-1-main/config';
+import {_PORT} from './calc-1-main/config';
 import {startDB} from './calc-1-main/db';
 import {routes} from './calc-1-main/routes';
 import {appUse} from './calc-1-main/appUse';
@@ -23,9 +23,10 @@ routes(app);
 // подключаем БД
 startDB()
 
+
 // слушаем порт
-app.listen( PORT, () => {
-    console.log( `server started at http://localhost:${ PORT }` );
+app.listen( _PORT, () => {
+    console.log( `server started at http://localhost:${ _PORT }` );
 } );
 
 
