@@ -21,7 +21,7 @@ const generateTokken_1 = require("../../../calc-1-main/halpers/generateTokken");
 const getMe_1 = require("./getMe");
 exports.login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password, rememberMe } = req.body;
-    if (validators_1.validateAuth(req, res, 'login')) {
+    if (validators_1.validateAuth(req, res)) {
         try {
             // после валидации ищем юзера по email
             const user = yield user_model_1.default.findOne({ email });
@@ -38,7 +38,7 @@ exports.login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 const [token, tokenDeathTime] = generateTokken_1.updateGenerateToken(user._id, rememberMe);
                 try {
                     // options {new:true} - findByIdAndUpdate возвращает уже обновленный обьект
-                    const newUser = yield user_model_1.default.findByIdAndUpdate(user._id, { token, tokenDeathTime, rememberMe: !!rememberMe }, { new: true });
+                    const newUser = yield user_model_1.default.findByIdAndUpdate(user._id, { token, tokenDeathTime, rememberMe: !!rememberMe }, { new: true }).exec();
                     if (!newUser) {
                         error_result_1.errorStatus500(res, 'net update, error bd/server', 'logIn/User.findByIdAndUpdate');
                     }

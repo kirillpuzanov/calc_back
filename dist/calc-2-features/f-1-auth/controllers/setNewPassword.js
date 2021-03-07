@@ -30,7 +30,7 @@ exports.setNewPassword = (req, res) => __awaiter(void 0, void 0, void 0, functio
             const user = yield user_model_1.default.findOne({ resetPasswordToken: tempToken }).exec();
             // если юзер не найден или срок временного токена вышел
             if (!user || (user.resetPasswordTokenDeathTime && user.resetPasswordTokenDeathTime < Date.now())) {
-                error_result_1.errorStatus400(res, 'Bad token', 401, {}, 'setNewPass/findOne');
+                error_result_1.errorStatus400(res, 'Bad token', 401, {});
             }
             else {
                 try {

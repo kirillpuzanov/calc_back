@@ -5,7 +5,8 @@
   "scripts": {
     "start": "SET PORT=3007 && nodemon dist/index.js",
     "watch": "tsc -w",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "startDebag": "SET PORT=3007 && nodemon --inspect dist/index.js"
   },
   "dependencies": {
     "@types/dotenv": "^8.2.0",
@@ -33,7 +34,8 @@
     "babel": "^6.23.0",
     "bcrypt": "^5.0.0",
     "jsonwebtoken": "^8.5.1",
-    "nodemon": "^2.0.2",
+    "nodemon": "2.0.4",
     "typescript": "^3.8.3"
   }
 }
+

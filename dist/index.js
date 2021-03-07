@@ -18,11 +18,16 @@ app.use(body_parser_1.default.urlencoded({ limit: "7mb", extended: false }));
 appUse_1.appUse(app);
 // основные роуты
 routes_1.routes(app);
+// parse application/json
+app.use(body_parser_1.default.json({ limit: "7mb" }));
+// parse application/x-www-form-urlencoded
+app.use(body_parser_1.default.urlencoded({ limit: "7mb", extended: false }));
 // подключаем БД
 db_1.startDB();
 // слушаем порт
-app.listen(config_1._PORT, () => {
-    console.log(`server started at http://localhost:${config_1._PORT}`);
+const port = process.env.PORT || config_1._PORT;
+app.listen(port, () => {
+    console.log(`server started at http://localhost:${port}`);
 });
 // Имя Описание
 // $eq Соответствует значениям, которые равны указанному значению.

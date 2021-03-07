@@ -4,10 +4,9 @@ import auth from '../calc-2-features/f-1-auth/index-auth';
 
 
 export const routes = (app: Express) => {
-//  app.use('/users', users)
 
     app.use('/auth', auth)
-    app.use('/', payment)
+    app.use('/payment', payment)
 
     // * '?' PNF 404
     app.use((req: Request, res: Response) => {

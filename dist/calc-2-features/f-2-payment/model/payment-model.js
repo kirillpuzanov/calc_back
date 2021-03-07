@@ -2,23 +2,24 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const PaymentSchema = new mongoose_1.Schema({
-    // user_id: Schema.Types.ObjectId,
-    // user_name: String,
+    user_id: mongoose_1.Schema.Types.ObjectId,
+    user_name: String,
     loadPlace: String,
     packagingCargo: [{
             id: String,
-            img: String,
-            title: String,
+            bagType: String,
+            cargoTitle: String,
             width: Number,
             height: Number,
             length: Number,
             diameter: Number,
-            volume: Number,
             weight: Number,
             amount: Number,
             inHeight: Boolean,
             inLength: Boolean,
             inWidth: Boolean,
+            isStack: Boolean,
+            img: String
         }],
     withPallet: String,
     totalCargoValue: {

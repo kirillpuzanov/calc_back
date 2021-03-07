@@ -14,9 +14,10 @@ const auth = express.Router();
 auth.post('/login', login)//+
 auth.post('/register', registration)//+
 auth.post('/forgot', recoveryPassword) //+
-auth.post('/newPass', setNewPassword) // не проверял
-auth.post('/me', findUserByToken(getMe))//?
-auth.put('/me', findUserByToken(updateUser))
-auth.delete('/me', findUserByToken(logout)) //?
+auth.post('/newPass', setNewPassword) //+ нужно проверить через front
+auth.get('/me', findUserByToken(getMe))//? + нужно проверить через front
+auth.put('/me', findUserByToken(updateUser)) // --
+auth.delete('/me', findUserByToken(logout)) //+? + нужно проверить через front
+
 
 export default auth

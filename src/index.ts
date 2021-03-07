@@ -20,13 +20,20 @@ appUse(app)
 // основные роуты
 routes(app);
 
+
+// parse application/json
+app.use(bodyParser.json({limit: "7mb"}));
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({limit: "7mb", extended: false}));
+
 // подключаем БД
 startDB()
 
 
 // слушаем порт
-app.listen( _PORT, () => {
-    console.log( `server started at http://localhost:${ _PORT }` );
+const port = process.env.PORT || _PORT
+app.listen( port, () => {
+    console.log( `server started at http://localhost:${port}` );
 } );
 
 

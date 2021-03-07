@@ -16,19 +16,22 @@ exports.addCharacteristicsCargo = void 0;
 const payment_model_1 = __importDefault(require("../model/payment-model"));
 const success_result_1 = require("../../../calc-1-main/halpers/statuses/success-result");
 const error_result_1 = require("../../../calc-1-main/halpers/statuses/error-result");
-exports.addCharacteristicsCargo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const searchIdPayment = req.body.searchIdPayment;
+const cookie_1 = require("../../../calc-1-main/cookie");
+exports.addCharacteristicsCargo = (req, res, user) => __awaiter(void 0, void 0, void 0, function* () {
+    const currentPaymentId = req.body.currentPaymentId;
     const newPackagingCargo = req.body.packagingCargo;
-    if (!searchIdPayment || !newPackagingCargo) {
-        error_result_1.errorStatus400(res, 'incomplete data in the request', 404, newPackagingCargo);
+    if (!currentPaymentId || !newPackagingCargo) {
+        error_result_1.errorStatus400(res, 'incomplete data in the request', 404, { currentPaymentId, newPackagingCargo });
     }
     try {
         const updatePackagingCargo = yield payment_model_1.default
-            .findByIdAndUpdate({ _id: searchIdPayment }, { packagingCargo: newPackagingCargo });
+            .findByIdAndUpdate({ _id: currentPaymentId }, { packagingCargo: newPackagingCargo }).exec();
         if (!updatePackagingCargo)
-            error_result_1.errorStatus400(res, 'not updated, bad request...', 404, { searchIdPayment, newPackagingCargo });
-        else
+            error_result_1.errorStatus400(res, 'not updated, bad request...', 404, { currentPaymentId, newPackagingCargo });
+        else {
+            cookie_1.resCookie(res, user);
             success_result_1.successResult(res, 'update cargo(s) value success!', 200, newPackagingCargo);
+        }
     }
     catch (err) {
         error_result_1.errorStatus500(res, err, 'in addCharacteristicsCargo/updatePackagingCargo');

@@ -16,13 +16,16 @@ exports.addPayment = void 0;
 const payment_model_1 = __importDefault(require("../model/payment-model"));
 const error_result_1 = require("../../../calc-1-main/halpers/statuses/error-result");
 const success_result_1 = require("../../../calc-1-main/halpers/statuses/success-result");
-exports.addPayment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const cookie_1 = require("../../../calc-1-main/cookie");
+exports.addPayment = (req, res, user) => __awaiter(void 0, void 0, void 0, function* () {
     const loadPlace = req.body.loadPlace;
     if ((loadPlace !== 'Грузовик') && (loadPlace !== 'Контейнер')) {
         error_result_1.errorStatus400(res, 'not create payment/add loadPlace, bad request...', 400, loadPlace);
     }
     try {
         const newPayment = yield payment_model_1.default.create({
+            user_id: user._id,
+            user_name: user.name,
             loadPlace: loadPlace,
             packagingCargo: [],
             withPallet: '',
@@ -34,7 +37,8 @@ exports.addPayment = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             error_result_1.errorStatus400(res, '11', 400, loadPlace);
         }
         else {
-            success_result_1.successResult(res, 'create payment/add loadPlace success!', 200, loadPlace);
+            cookie_1.resCookie(res, user);
+            success_result_1.successResult(res, 'create payment/add loadPlace success!', 200, newPayment._doc);
         }
     }
     catch (err) {

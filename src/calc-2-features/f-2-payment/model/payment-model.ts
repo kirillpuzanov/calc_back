@@ -2,8 +2,8 @@ import  {Schema, Document, model} from 'mongoose';
 
 
 export interface IPayment extends Document {
-    // _id: mongoose.Types.ObjectId
-    // user_name: mongoose.Types.ObjectId
+    user_id: string
+    user_name: string
     loadPlace: loadPlaceType
     packagingCargo: PackagingItemType[]
     withPallet: string
@@ -18,23 +18,24 @@ export interface IPayment extends Document {
 
 const PaymentSchema: Schema = new Schema(
     {
-        // user_id: Schema.Types.ObjectId,
-        // user_name: String,
+        user_id: Schema.Types.ObjectId,
+        user_name: String,
         loadPlace: String,
         packagingCargo: [{
             id: String,
-            img: String,
-            title: String,
+            bagType: String,
+            cargoTitle: String,
             width: Number,
             height: Number,
             length: Number,
             diameter: Number,
-            volume: Number,
             weight: Number,
             amount: Number,
             inHeight:Boolean,
             inLength:Boolean,
             inWidth:Boolean,
+            isStack:Boolean,
+            img: String
         }],
         withPallet: String,
         totalCargoValue: {
@@ -80,19 +81,20 @@ export default PaymentModel
 
 export type loadPlaceType = 'Грузовик' | 'Контейнер'
 export type PackagingItemType = {
-    id: string
-    img: string
-    title: string
+    id: string // id  front
+    bagType: string
+    cargoTitle: string
     width: number
     height: number
     length: number
     diameter: number
-    volume: number
     weight: number
     amount: number
-    inHeight:boolean,
-    inLength:boolean,
-    inWidth:boolean,
+    inHeight: boolean
+    inLength: boolean
+    inWidth: boolean
+    isStack: boolean
+    img: string
 }
 export type TotalCargoValueType = {
     cargoVolume: number

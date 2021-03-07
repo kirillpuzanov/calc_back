@@ -16,11 +16,11 @@ exports.findUserByToken = void 0;
 const user_model_1 = __importDefault(require("../../calc-2-features/f-1-auth/user-model/user-model"));
 const error_result_1 = require("./statuses/error-result");
 const generateTokken_1 = require("./generateTokken");
-const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 exports.findUserByToken = (f) => (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const decodedToken = jsonwebtoken_1.default.verify(req.cookies.token, process.env.SECRET_KEY);
+    // const decodedToken = jsonwebtoken.verify(req.cookies.token, process.env.SECRET_KEY as string) as { id: string };
+    const token = req.cookies.token;
     try {
-        const user = yield user_model_1.default.findOne({ token: decodedToken.id }).exec();
+        const user = yield user_model_1.default.findOne({ token }).exec();
         // если юзер - 'false',tokenDeathTime - 'false' (для TS), время токена истекло
         if (!user || !user.tokenDeathTime || user.tokenDeathTime < new Date().getTime()) {
             error_result_1.errorStatus400(res, 'you are not authorized', 401);
@@ -40,7 +40,7 @@ exports.findUserByToken = (f) => (req, res) => __awaiter(void 0, void 0, void 0,
                 }
             }
             catch (e) {
-                error_result_1.errorStatus500(res, 'not updated, back has broken', '/findUserByToken/User.findOne');
+                error_result_1.errorStatus500(res, 'not updated, back has broken', 'User.findByIdAndUpdate');
             }
         }
     }

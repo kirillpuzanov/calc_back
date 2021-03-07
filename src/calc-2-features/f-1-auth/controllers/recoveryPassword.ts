@@ -12,11 +12,11 @@ export const recoveryPassword = async (req: Request, res: Response) => {
 
     // валидируем email
     if (!emailValidator(email)) {
-        errorStatus400(res, 'not valid email address.', 400, {email}, 'recoveryPass/emailValidator')
+        errorStatus400(res, 'not valid email address.', 400, {email})
     } else {
         try {
             const user: IUser | null = await User.findOne({email})
-            if (!user) errorStatus400(res, 'Email not found', 400, {email}, 'recoveryPass/email')
+            if (!user) errorStatus400(res, 'Email not found', 400, {email})
             else {
                 try {
                     // создаем временный токен, для утановки нового пароля

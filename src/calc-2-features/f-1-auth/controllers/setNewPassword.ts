@@ -16,7 +16,7 @@ export const setNewPassword = async (req: Request, res: Response) => {
         const user: IUser | null = await User.findOne({resetPasswordToken: tempToken}).exec()
         // если юзер не найден или срок временного токена вышел
         if (!user || (user.resetPasswordTokenDeathTime && user.resetPasswordTokenDeathTime < Date.now())) {
-            errorStatus400(res, 'Bad token', 401, {}, 'setNewPass/findOne')
+            errorStatus400(res, 'Bad token', 401, {})
         } else {
             try {
                 const newUser: IUser | null = await User.findByIdAndUpdate(

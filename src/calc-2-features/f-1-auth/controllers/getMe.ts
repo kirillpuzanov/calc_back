@@ -6,9 +6,14 @@ export const getMe = async (req: Request, res: Response,user: IUser) => {
 
     const body: any = {...user};
 
-    delete body.password; // don't send password to the front
+    delete body.password; // не обязательно , т.к. зашифрован
     delete body.resetPasswordToken;
     delete body.resetPasswordTokenDeathTime;
+    delete body.__v;
+    delete body.created;
+    delete body.updated;
+    delete body.token;
+    delete body.tokenDeathTime;
 
     resCookie(res, user).status(200).json({...body});
 }

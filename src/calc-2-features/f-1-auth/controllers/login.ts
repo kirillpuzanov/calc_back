@@ -9,7 +9,7 @@ import {getMe} from './getMe';
 export const login = async (req: Request, res: Response) => {
     const {email, password, rememberMe} = req.body
 
-    if (validateAuth(req, res, 'login')) {
+    if (validateAuth(req, res)) {
         try {
             // после валидации ищем юзера по email
             const user: IUser | null = await User.findOne({email})
@@ -29,7 +29,7 @@ export const login = async (req: Request, res: Response) => {
                         user._id,
                         {token, tokenDeathTime, rememberMe: !!rememberMe},
                         {new: true}
-                    )
+                    ).exec()
                     if (!newUser) {
                         errorStatus500(res, 'net update, error bd/server', 'logIn/User.findByIdAndUpdate')
                     } else {

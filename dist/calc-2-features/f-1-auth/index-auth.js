@@ -16,9 +16,9 @@ const auth = express_1.default.Router();
 auth.post('/login', login_1.login); //+
 auth.post('/register', registration_1.registration); //+
 auth.post('/forgot', recoveryPassword_1.recoveryPassword); //+
-auth.post('/newPass', setNewPassword_1.setNewPassword); // не проверял
-auth.post('/me', findByTokken_1.findUserByToken(getMe_1.getMe)); //?
-auth.put('/me', findByTokken_1.findUserByToken(updateUser_1.updateUser));
-auth.delete('/me', findByTokken_1.findUserByToken(logout_1.logout)); //?
+auth.post('/newPass', setNewPassword_1.setNewPassword); //+ нужно проверить через front
+auth.get('/me', findByTokken_1.findUserByToken(getMe_1.getMe)); //? + нужно проверить через front
+auth.put('/me', findByTokken_1.findUserByToken(updateUser_1.updateUser)); // --
+auth.delete('/me', findByTokken_1.findUserByToken(logout_1.logout)); //+? + нужно проверить через front
 exports.default = auth;
 //# sourceMappingURL=index-auth.js.map

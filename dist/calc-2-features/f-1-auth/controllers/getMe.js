@@ -13,9 +13,14 @@ exports.getMe = void 0;
 const cookie_1 = require("../../../calc-1-main/cookie");
 exports.getMe = (req, res, user) => __awaiter(void 0, void 0, void 0, function* () {
     const body = Object.assign({}, user);
-    delete body.password; // don't send password to the front
+    delete body.password; // не обязательно , т.к. зашифрован
     delete body.resetPasswordToken;
     delete body.resetPasswordTokenDeathTime;
+    delete body.__v;
+    delete body.created;
+    delete body.updated;
+    delete body.token;
+    delete body.tokenDeathTime;
     cookie_1.resCookie(res, user).status(200).json(Object.assign({}, body));
 });
 //# sourceMappingURL=getMe.js.map

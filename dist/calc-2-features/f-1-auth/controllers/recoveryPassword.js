@@ -23,13 +23,13 @@ exports.recoveryPassword = (req, res) => __awaiter(void 0, void 0, void 0, funct
     const { email, from } = req.body;
     // валидируем email
     if (!validators_1.emailValidator(email)) {
-        error_result_1.errorStatus400(res, 'not valid email address.', 400, { email }, 'recoveryPass/emailValidator');
+        error_result_1.errorStatus400(res, 'not valid email address.', 400, { email });
     }
     else {
         try {
             const user = yield user_model_1.default.findOne({ email });
             if (!user)
-                error_result_1.errorStatus400(res, 'Email not found', 400, { email }, 'recoveryPass/email');
+                error_result_1.errorStatus400(res, 'Email not found', 400, { email });
             else {
                 try {
                     // создаем временный токен, для утановки нового пароля
