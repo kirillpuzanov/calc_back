@@ -18,7 +18,7 @@ const error_result_1 = require("../../../calc-1-main/halpers/statuses/error-resu
 const validators_1 = require("../../../calc-1-main/halpers/validators");
 exports.registration = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, name, password } = req.body;
-    if (validators_1.validateAuth(req, res, 'registration')) {
+    if (validators_1.validateAuth(req, res)) {
         try {
             // проверка на существование в базе такое email
             const oldUser = yield user_model_1.default.findOne({ email });

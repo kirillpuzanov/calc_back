@@ -15,6 +15,5 @@ export const errorStatus500 = (res: Response, error: any, input_data: string) =>
         input_data,
 
     }
-    console.log('Error Server/DB', errorObj)
     res.status(500).json({errorObj})
 }

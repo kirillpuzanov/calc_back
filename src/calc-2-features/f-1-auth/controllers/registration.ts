@@ -8,7 +8,7 @@ import {validateAuth} from '../../../calc-1-main/halpers/validators';
 export const registration = async (req: Request, res: Response) => {
     const {email,name, password} = req.body;
 
-    if (validateAuth(req,res, 'registration')) {
+    if (validateAuth(req,res)) {
         try {
             // проверка на существование в базе такое email
             const oldUser: IUser | null = await User.findOne({email})

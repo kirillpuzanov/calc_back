@@ -14,7 +14,6 @@ exports.errorStatus500 = (res, error, input_data) => {
         statusCode: 500,
         input_data,
     };
-    console.log('Error Server/DB', errorObj);
     res.status(500).json({ errorObj });
 };
 //# sourceMappingURL=error-result.js.map
