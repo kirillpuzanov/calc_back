@@ -51,10 +51,9 @@ mongoose_1.default.connect(config_1.MongoDBUris, {
     useFindAndModify: true,
 }).then(() => {
     console.log('db connected successfully');
-    const port = process.env.PORT || config_1._PORT;
     // слушаем порт
-    server.listen(port, () => {
-        console.log(`server started at http://localhost:${port}`);
+    server.listen(process.env.PORT || config_1._PORT, () => {
+        console.log(`server started`);
     });
 }).catch(e => console.log('MongoDB connection error: ', Object.assign({}, e)));
 // Имя Описание

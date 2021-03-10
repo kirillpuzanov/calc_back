@@ -38,10 +38,10 @@ mongoose.connect(MongoDBUris, {
 }).then(() => {
 
     console.log('db connected successfully')
-    const port = process.env.PORT || _PORT
+
     // слушаем порт
-    server.listen(port, () => {
-        console.log(`server started at http://localhost:${port}`);
+    server.listen(process.env.PORT || _PORT, () => {
+        console.log(`server started`);
     });
 }).catch(e => console.log('MongoDB connection error: ', {...e}));
 
