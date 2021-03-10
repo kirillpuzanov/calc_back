@@ -16,7 +16,7 @@ exports.login = void 0;
 const validators_1 = require("../../../calc-1-main/halpers/validators");
 const user_model_1 = __importDefault(require("../user-model/user-model"));
 const error_result_1 = require("../../../calc-1-main/halpers/statuses/error-result");
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const generateTokken_1 = require("../../../calc-1-main/halpers/generateTokken");
 const getMe_1 = require("./getMe");
 exports.login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -30,7 +30,7 @@ exports.login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 error_result_1.errorStatus400(res, 'user with this email is not registered', 404, email);
                 // если найден но неверный пароль- ошибка 400
             }
-            else if (!(yield bcrypt_1.default.compare(password, user.password))) {
+            else if (!(yield bcryptjs_1.default.compare(password, user.password))) {
                 error_result_1.errorStatus400(res, 'not correct email/password', 400);
             }
             else {

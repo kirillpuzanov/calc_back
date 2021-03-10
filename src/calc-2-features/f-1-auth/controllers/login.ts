@@ -2,7 +2,7 @@ import {Request, Response} from 'express';
 import {validateAuth} from '../../../calc-1-main/halpers/validators';
 import User, {IUser} from '../user-model/user-model';
 import {errorStatus400, errorStatus500} from '../../../calc-1-main/halpers/statuses/error-result';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import {updateGenerateToken} from '../../../calc-1-main/halpers/generateTokken';
 import {getMe} from './getMe';
 

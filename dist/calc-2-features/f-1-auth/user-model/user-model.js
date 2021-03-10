@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const userSchema = new mongoose_1.Schema({
     email: {
         type: String,
@@ -64,7 +64,7 @@ userSchema.pre('save', function (next) {
         if (!user.isModified('password')) {
             next();
         }
-        user.password = yield bcrypt_1.default.hash(user.password, 7);
+        user.password = yield bcryptjs_1.default.hash(user.password, 7);
     });
 });
 const User = mongoose_1.model('User', userSchema);
