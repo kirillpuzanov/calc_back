@@ -14,7 +14,7 @@ payment.post('/s_payment', findUserByToken(addPayment));
 payment.put('/packing', findUserByToken(addCharacteristicsCargo));
 payment.put('/withPallet', findUserByToken(isWithPallet));
 payment.put('/palletParam', findUserByToken(palletParam));
-payment.put('/placementCargo', findUserByToken(placementCargo_totalValue));
+payment.put('/placement', findUserByToken(placementCargo_totalValue));
 payment.put('/transports', findUserByToken(transports));
 
 export default payment
