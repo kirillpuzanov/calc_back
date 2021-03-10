@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.resCookie = exports.cookie = exports.cookieSettings = void 0;
 const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
-// export const cookieSettings = {sameSite: 'none' as const, secure: true}; если через  хероку
-exports.cookieSettings = {};
+exports.cookieSettings = { sameSite: 'none', secure: true };
+// export const cookieSettings = {}; если локально
 exports.cookie = (app) => {
     const corsOptions = {
         credentials: true,

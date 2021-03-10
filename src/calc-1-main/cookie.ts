@@ -3,9 +3,9 @@ import cookieParser from 'cookie-parser';
 import {Express, NextFunction, Response} from 'express';
 import {IUser} from '../calc-2-features/f-1-auth/user-model/user-model';
 
-// export const cookieSettings = {sameSite: 'none' as const, secure: true}; если через  хероку
+export const cookieSettings = {sameSite: 'none' as const, secure: true};
 
-export const cookieSettings = {};
+// export const cookieSettings = {}; если локально
 export const cookie = (app: Express) => {
     const corsOptions = {
         credentials: true,
