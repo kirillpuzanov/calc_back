@@ -44,7 +44,7 @@ app.use(body_parser_1.default.json({ limit: '7mb' }));
 // parse application/x-www-form-urlencoded
 app.use(body_parser_1.default.urlencoded({ limit: '7mb', extended: false }));
 // подключаем БД
-mongoose_1.default.connect(process.env.MongoDBUris || config_1.MongoDBUris, {
+mongoose_1.default.connect(config_1.MongoDBUris, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: false,
