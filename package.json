@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
-    "start": "SET PORT=3007 && nodemon dist/index.js",
+    "start": "SET PORT=3007 && node dist/index.js",
+    "startDev": "SET PORT=3007 && nodemon dist/index.js",
     "watch": "tsc -w",
     "clean": "rimraf dist",
     "startDebag": "SET PORT=3007 && nodemon --inspect dist/index.js"
