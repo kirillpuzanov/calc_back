@@ -24,7 +24,7 @@ exports.login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if (validators_1.validateAuth(req, res)) {
         try {
             // после валидации ищем юзера по email
-            const user = yield user_model_1.default.findOne({ email });
+            const user = yield user_model_1.default.findOne({ email }).exec();
             // если не найден- ошибка 404
             if (!user) {
                 error_result_1.errorStatus400(res, 'user with this email is not registered', 404, email);

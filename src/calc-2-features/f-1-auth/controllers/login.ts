@@ -12,7 +12,7 @@ export const login = async (req: Request, res: Response) => {
     if (validateAuth(req, res)) {
         try {
             // после валидации ищем юзера по email
-            const user: IUser | null = await User.findOne({email})
+            const user: IUser | null = await User.findOne({email}).exec()
             // если не найден- ошибка 404
             if (!user) {
                 errorStatus400(res,  'user with this email is not registered', 404, email)
