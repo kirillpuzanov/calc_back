@@ -24,4 +24,4 @@ export const addCharacteristicsCargo = async (req: Request, res: Response,user: 
         errorStatus500(res, err,'in addCharacteristicsCargo/updatePackagingCargo')
     }
 }
-//test commit
+

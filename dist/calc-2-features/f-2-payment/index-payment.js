@@ -9,10 +9,12 @@ const addPayment_1 = require("./controllers/addPayment");
 const findByTokken_1 = require("../../calc-1-main/halpers/findByTokken");
 const pallet_noPallet_1 = require("./controllers/pallet_noPallet");
 const palletParam_1 = require("./controllers/palletParam");
+const transports_1 = require("./controllers/transports");
 const payment = express_1.default.Router();
 payment.post('/s_payment', findByTokken_1.findUserByToken(addPayment_1.addPayment));
 payment.put('/packing', findByTokken_1.findUserByToken(addCharacteristicsCargo_1.addCharacteristicsCargo));
 payment.put('/withPallet', findByTokken_1.findUserByToken(pallet_noPallet_1.isWithPallet));
 payment.put('/palletParam', findByTokken_1.findUserByToken(palletParam_1.palletParam));
+payment.put('/transports', findByTokken_1.findUserByToken(transports_1.transports));
 exports.default = payment;
 //# sourceMappingURL=index-payment.js.map

@@ -37,5 +37,4 @@ exports.addCharacteristicsCargo = (req, res, user) => __awaiter(void 0, void 0, 
         error_result_1.errorStatus500(res, err, 'in addCharacteristicsCargo/updatePackagingCargo');
     }
 });
-//test commit
 //# sourceMappingURL=addCharacteristicsCargo.js.map

@@ -2,7 +2,7 @@ import {Request, Response} from "express";
 import {IUser} from '../user-model/user-model';
 import {cookieSettings} from '../../../calc-1-main/cookie';
 
-export const logout = async (req: Request, res: Response, user: IUser) => {
+export const logout = async (req: Request, res: Response) => {
     res.cookie('token', '', {
         ...cookieSettings,
         expires: new Date(0)

@@ -12,7 +12,7 @@ exports.cookie = (app) => {
     const corsOptions = {
         credentials: true,
         origin: (origin, callback) => {
-            console.log("origin: ", origin);
+            console.log('origin: ', origin);
             callback(null, true); // everyone is allowed
         }
     };
@@ -20,6 +20,6 @@ exports.cookie = (app) => {
     app.use(cookie_parser_1.default());
 };
 exports.resCookie = (res, user) => {
-    return res.cookie("token", user.token, Object.assign(Object.assign({}, exports.cookieSettings), { expires: new Date(user.tokenDeathTime || 0) }));
+    return res.cookie('token', user.token, Object.assign(Object.assign({}, exports.cookieSettings), { expires: new Date(user.tokenDeathTime || 0) }));
 };
 //# sourceMappingURL=cookie.js.map

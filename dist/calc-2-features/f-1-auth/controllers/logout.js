@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.logout = void 0;
 const cookie_1 = require("../../../calc-1-main/cookie");
-exports.logout = (req, res, user) => __awaiter(void 0, void 0, void 0, function* () {
+exports.logout = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.cookie('token', '', Object.assign(Object.assign({}, cookie_1.cookieSettings), { expires: new Date(0) })).status(200).json({ info: 'logout success...' });
 });
 //# sourceMappingURL=logout.js.map
