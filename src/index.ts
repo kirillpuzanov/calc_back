@@ -4,6 +4,7 @@ import {startDB} from './calc-1-main/db';
 import {routes} from './calc-1-main/routes';
 import {appUse} from './calc-1-main/appUse';
 import bodyParser from 'body-parser';
+import * as http from 'http';
 
 
 const app = express();
@@ -20,6 +21,7 @@ appUse(app)
 // основные роуты
 routes(app);
 
+const server = http.createServer(app)
 
 // parse application/json
 app.use(bodyParser.json({limit: "7mb"}));
@@ -32,7 +34,7 @@ startDB()
 
 // слушаем порт
 const port = process.env.PORT || _PORT
-app.listen( port, () => {
+server.listen( port, () => {
     console.log( `server started at http://localhost:${port}` );
 } );
 

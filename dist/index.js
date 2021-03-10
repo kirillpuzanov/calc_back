@@ -1,4 +1,23 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -9,6 +28,7 @@ const db_1 = require("./calc-1-main/db");
 const routes_1 = require("./calc-1-main/routes");
 const appUse_1 = require("./calc-1-main/appUse");
 const body_parser_1 = __importDefault(require("body-parser"));
+const http = __importStar(require("http"));
 const app = express_1.default();
 // parse application/json
 app.use(body_parser_1.default.json({ limit: "7mb" }));
@@ -18,6 +38,7 @@ app.use(body_parser_1.default.urlencoded({ limit: "7mb", extended: false }));
 appUse_1.appUse(app);
 // основные роуты
 routes_1.routes(app);
+const server = http.createServer(app);
 // parse application/json
 app.use(body_parser_1.default.json({ limit: "7mb" }));
 // parse application/x-www-form-urlencoded
@@ -26,7 +47,7 @@ app.use(body_parser_1.default.urlencoded({ limit: "7mb", extended: false }));
 db_1.startDB();
 // слушаем порт
 const port = process.env.PORT || config_1._PORT;
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`server started at http://localhost:${port}`);
 });
 // Имя Описание
