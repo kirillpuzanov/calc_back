@@ -1,18 +1,19 @@
 import express from 'express';
-import {_PORT} from './calc-1-main/config';
-import {startDB} from './calc-1-main/db';
+import {_PORT, MongoDBUris} from './calc-1-main/config';
+
 import {routes} from './calc-1-main/routes';
 import {appUse} from './calc-1-main/appUse';
 import bodyParser from 'body-parser';
 import * as http from 'http';
+import mongoose from 'mongoose';
 
 
 const app = express();
 
 // parse application/json
-app.use(bodyParser.json({limit: "7mb"}));
+app.use(bodyParser.json({limit: '7mb'}));
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({limit: "7mb", extended: false}));
+app.use(bodyParser.urlencoded({limit: '7mb', extended: false}));
 
 
 // appUse=> cookie, bodyparser, log middleware
@@ -24,22 +25,25 @@ routes(app);
 const server = http.createServer(app)
 
 // parse application/json
-app.use(bodyParser.json({limit: "7mb"}));
+app.use(bodyParser.json({limit: '7mb'}));
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({limit: "7mb", extended: false}));
+app.use(bodyParser.urlencoded({limit: '7mb', extended: false}));
 
 // подключаем БД
-startDB()
+mongoose.connect(MongoDBUris, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: false,
+    useFindAndModify: true,
+}).then(() => {
 
-
-// слушаем порт
-const port = process.env.PORT || _PORT
-server.listen( port, () => {
-    console.log( `server started at http://localhost:${port}` );
-} );
-
-
-
+    console.log('db connected successfully')
+    const port = process.env.PORT || _PORT
+    // слушаем порт
+    server.listen(port, () => {
+        console.log(`server started at http://localhost:${port}`);
+    });
+}).catch(e => console.log('MongoDB connection error: ', {...e}));
 
 
 // Имя Описание

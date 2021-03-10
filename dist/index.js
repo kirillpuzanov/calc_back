@@ -24,32 +24,39 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const config_1 = require("./calc-1-main/config");
-const db_1 = require("./calc-1-main/db");
 const routes_1 = require("./calc-1-main/routes");
 const appUse_1 = require("./calc-1-main/appUse");
 const body_parser_1 = __importDefault(require("body-parser"));
 const http = __importStar(require("http"));
+const mongoose_1 = __importDefault(require("mongoose"));
 const app = express_1.default();
 // parse application/json
-app.use(body_parser_1.default.json({ limit: "7mb" }));
+app.use(body_parser_1.default.json({ limit: '7mb' }));
 // parse application/x-www-form-urlencoded
-app.use(body_parser_1.default.urlencoded({ limit: "7mb", extended: false }));
+app.use(body_parser_1.default.urlencoded({ limit: '7mb', extended: false }));
 // appUse=> cookie, bodyparser, log middleware
 appUse_1.appUse(app);
 // основные роуты
 routes_1.routes(app);
 const server = http.createServer(app);
 // parse application/json
-app.use(body_parser_1.default.json({ limit: "7mb" }));
+app.use(body_parser_1.default.json({ limit: '7mb' }));
 // parse application/x-www-form-urlencoded
-app.use(body_parser_1.default.urlencoded({ limit: "7mb", extended: false }));
+app.use(body_parser_1.default.urlencoded({ limit: '7mb', extended: false }));
 // подключаем БД
-db_1.startDB();
-// слушаем порт
-const port = process.env.PORT || config_1._PORT;
-server.listen(port, () => {
-    console.log(`server started at http://localhost:${port}`);
-});
+mongoose_1.default.connect(config_1.MongoDBUris, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: false,
+    useFindAndModify: true,
+}).then(() => {
+    console.log('db connected successfully');
+    const port = process.env.PORT || config_1._PORT;
+    // слушаем порт
+    server.listen(port, () => {
+        console.log(`server started at http://localhost:${port}`);
+    });
+}).catch(e => console.log('MongoDB connection error: ', Object.assign({}, e)));
 // Имя Описание
 // $eq Соответствует значениям, которые равны указанному значению.
 // $gt Соответствует значениям, которые больше указанного значения.
