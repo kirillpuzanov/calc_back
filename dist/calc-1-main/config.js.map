@@ -1,1 +1,1 @@
-{"version":3,"file":"config.js","sourceRoot":"","sources":["../../src/calc-1-main/config.ts"],"names":[],"mappings":";;;AAEA,kBAAkB;AAClB,MAAM,WAAW,GAAG,OAAO,CAAC,GAAG,CAAC,WAAW,IAAI,kBAAkB,CAAC;AAClE,MAAM,WAAW,GAAG,OAAO,CAAC,GAAG,CAAC,YAAY,IAAI,QAAQ,CAAC;AAE5C,QAAA,WAAW,GAAG,iBAAiB,WAAW,IAAI,WAAW,kEAAkE,CAAC;AAG5H,QAAA,KAAK,GAAG,IAAI,CAAC"}
+{"version":3,"file":"config.js","sourceRoot":"","sources":["../../src/calc-1-main/config.ts"],"names":[],"mappings":";;;AAEA,kBAAkB;AAEL,QAAA,WAAW,GAAG,uGAAuG,CAAC;AAEtH,QAAA,KAAK,GAAG,IAAI,CAAC"}
