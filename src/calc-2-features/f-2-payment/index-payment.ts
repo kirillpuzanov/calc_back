@@ -6,6 +6,7 @@ import {isWithPallet} from './controllers/pallet_noPallet';
 import {palletParam} from './controllers/palletParam';
 import {transports} from './controllers/transports';
 import {placementCargo_totalValue} from './controllers/placementCargo_totalValue';
+import {resultObject} from './controllers/resultObject';
 
 
 const payment = express.Router();
@@ -16,6 +17,7 @@ payment.put('/withPallet', findUserByToken(isWithPallet));
 payment.put('/palletParam', findUserByToken(palletParam));
 payment.put('/placement', findUserByToken(placementCargo_totalValue));
 payment.put('/transports', findUserByToken(transports));
+payment.get('/result', findUserByToken(resultObject));
 
 export default payment
 

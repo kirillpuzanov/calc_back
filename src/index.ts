@@ -30,7 +30,7 @@ app.use(bodyParser.json({limit: '7mb'}));
 app.use(bodyParser.urlencoded({limit: '7mb', extended: false}));
 
 // подключаем БД
-mongoose.connect(process.env.MongoDBUrl || MongoDBUris, {
+mongoose.connect(process.env.MongoDBUrl ?? MongoDBUris, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: false,

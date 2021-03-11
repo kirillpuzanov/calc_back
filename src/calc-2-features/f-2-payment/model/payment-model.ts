@@ -67,7 +67,6 @@ const PaymentSchema: Schema = new Schema(
             car_m: Number,
             img: String
         }],
-
     },
     {
         timestamps: {

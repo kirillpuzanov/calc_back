@@ -11,6 +11,7 @@ const pallet_noPallet_1 = require("./controllers/pallet_noPallet");
 const palletParam_1 = require("./controllers/palletParam");
 const transports_1 = require("./controllers/transports");
 const placementCargo_totalValue_1 = require("./controllers/placementCargo_totalValue");
+const resultObject_1 = require("./controllers/resultObject");
 const payment = express_1.default.Router();
 payment.post('/s_payment', findByTokken_1.findUserByToken(addPayment_1.addPayment));
 payment.put('/packing', findByTokken_1.findUserByToken(addCharacteristicsCargo_1.addCharacteristicsCargo));
@@ -18,5 +19,6 @@ payment.put('/withPallet', findByTokken_1.findUserByToken(pallet_noPallet_1.isWi
 payment.put('/palletParam', findByTokken_1.findUserByToken(palletParam_1.palletParam));
 payment.put('/placement', findByTokken_1.findUserByToken(placementCargo_totalValue_1.placementCargo_totalValue));
 payment.put('/transports', findByTokken_1.findUserByToken(transports_1.transports));
+payment.get('/result', findByTokken_1.findUserByToken(resultObject_1.resultObject));
 exports.default = payment;
 //# sourceMappingURL=index-payment.js.map
