@@ -17,8 +17,8 @@ auth.post('/login', login_1.login); //+
 auth.post('/register', registration_1.registration); //+
 auth.post('/forgot', recoveryPassword_1.recoveryPassword); //+
 auth.post('/newPass', setNewPassword_1.setNewPassword); //+ нужно проверить через front
-auth.get('/me', findByTokken_1.findUserByToken(getMe_1.getMe)); //? + нужно проверить через front
+auth.get('/me', findByTokken_1.findUserByToken(getMe_1.getMe));
 auth.put('/me', findByTokken_1.findUserByToken(updateUser_1.updateUser)); // --
-auth.delete('/me', logout_1.logout); //+? + нужно проверить через front
+auth.delete('/me', logout_1.logout);
 exports.default = auth;
 //# sourceMappingURL=index-auth.js.map

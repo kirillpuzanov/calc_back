@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import PaymentModel, {PackagingItemType, TotalCargoValueType} from '../model/payment-model';
+import PaymentModel from '../model/payment-model';
 import {successResult} from '../../../calc-1-main/halpers/statuses/success-result';
 import {errorStatus400, errorStatus500} from '../../../calc-1-main/halpers/statuses/error-result';
 import {resCookie} from '../../../calc-1-main/cookie';
@@ -18,7 +18,7 @@ export const resultObject = async (req: Request, res: Response, user: IUser) => 
         if (!resultPayment) errorStatus400(res, 'not find result payment', 404, {id})
         else {
             resCookie(res, user)
-            successResult(res, 'update cargo(s) value success!', 200, {resultPayment})
+            successResult(res, 'set current payment success!', 200, {...resultPayment._doc})
         }
     } catch (err) {
         errorStatus500(res, err, 'in addCharacteristicsCargo/updatePackagingCargo')

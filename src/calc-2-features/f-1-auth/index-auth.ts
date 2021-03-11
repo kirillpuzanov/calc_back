@@ -15,9 +15,9 @@ auth.post('/login', login)//+
 auth.post('/register', registration)//+
 auth.post('/forgot', recoveryPassword) //+
 auth.post('/newPass', setNewPassword) //+ нужно проверить через front
-auth.get('/me', findUserByToken(getMe))//? + нужно проверить через front
+auth.get('/me', findUserByToken(getMe))
 auth.put('/me', findUserByToken(updateUser)) // --
-auth.delete('/me', logout) //+? + нужно проверить через front
+auth.delete('/me', logout)
 
 
 export default auth

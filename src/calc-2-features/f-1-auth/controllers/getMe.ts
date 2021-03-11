@@ -1,7 +1,6 @@
 import {IUser} from '../user-model/user-model';
 import {resCookie} from '../../../calc-1-main/cookie';
 import {Request, Response} from 'express';
-import {resultObject} from '../../f-2-payment/controllers/resultObject';
 
 export const getMe = async (req: Request, res: Response, user: IUser) => {
     const {id} = req.query
@@ -17,9 +16,5 @@ export const getMe = async (req: Request, res: Response, user: IUser) => {
     delete body.token;
     delete body.tokenDeathTime;
 
-    if (id) {
-        await resultObject(req, res, user)
-    }else {
-        resCookie(res, user).status(200).json({...body});
-    }
+    resCookie(res, user).status(200).json({...body});
 }

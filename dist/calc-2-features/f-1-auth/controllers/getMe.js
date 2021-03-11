@@ -11,7 +11,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getMe = void 0;
 const cookie_1 = require("../../../calc-1-main/cookie");
-const resultObject_1 = require("../../f-2-payment/controllers/resultObject");
 exports.getMe = (req, res, user) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.query;
     const body = Object.assign({}, user);
@@ -23,11 +22,6 @@ exports.getMe = (req, res, user) => __awaiter(void 0, void 0, void 0, function* 
     delete body.updated;
     delete body.token;
     delete body.tokenDeathTime;
-    if (id) {
-        yield resultObject_1.resultObject(req, res, user);
-    }
-    else {
-        cookie_1.resCookie(res, user).status(200).json(Object.assign({}, body));
-    }
+    cookie_1.resCookie(res, user).status(200).json(Object.assign({}, body));
 });
 //# sourceMappingURL=getMe.js.map
