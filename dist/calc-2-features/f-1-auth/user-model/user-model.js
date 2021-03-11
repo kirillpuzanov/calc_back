@@ -32,9 +32,12 @@ const userSchema = new mongoose_1.Schema({
         type: Boolean,
         required: true
     },
-    name: {
+    userName: {
         type: String,
         required: true
+    },
+    organization: {
+        type: String
     },
     verified: {
         type: Boolean,

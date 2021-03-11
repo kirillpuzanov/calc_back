@@ -17,7 +17,7 @@ const user_model_1 = __importDefault(require("../user-model/user-model"));
 const error_result_1 = require("../../../calc-1-main/halpers/statuses/error-result");
 const validators_1 = require("../../../calc-1-main/halpers/validators");
 exports.registration = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { email, name, password } = req.body;
+    const { email, userName, password, organization } = req.body;
     if (validators_1.validateAuth(req, res)) {
         try {
             // проверка на существование в базе такое email
@@ -30,19 +30,19 @@ exports.registration = (req, res) => __awaiter(void 0, void 0, void 0, function*
                     password,
                     rememberMe: false,
                     isAdmin: false,
-                    name,
+                    organization,
+                    userName,
                     verified: false,
                     created: new Date(),
                     updated: new Date(),
                 });
                 res.status(201).json({
-                    status: 'success',
+                    status: 'register success',
                     user: {
                         email: user.email,
                         isAdmin: user.isAdmin,
                     },
                 });
-                // successResult(res, 'new user create!', 201, {user})
             }
         }
         catch (e) {
