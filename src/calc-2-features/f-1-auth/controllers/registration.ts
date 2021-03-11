@@ -6,7 +6,7 @@ import {validateAuth} from '../../../calc-1-main/halpers/validators';
 
 
 export const registration = async (req: Request, res: Response) => {
-    const {email,name, password} = req.body;
+    const {email,userName, password,organization} = req.body;
 
     if (validateAuth(req,res)) {
         try {
@@ -20,8 +20,8 @@ export const registration = async (req: Request, res: Response) => {
                         password,
                         rememberMe: false,
                         isAdmin: false,
-
-                        name,
+                        organization,
+                        userName,
                         verified: false,
 
                         created: new Date(),
@@ -29,13 +29,12 @@ export const registration = async (req: Request, res: Response) => {
                     }
                 )
                 res.status(201).json({
-                    status: 'success',
+                    status: 'register success',
                     user: {
                         email: user.email,
                         isAdmin: user.isAdmin,
                     },
                 })
-                // successResult(res, 'new user create!', 201, {user})
             }
         } catch (e) {
             errorStatus500(res, e.message, 'registration/create User')

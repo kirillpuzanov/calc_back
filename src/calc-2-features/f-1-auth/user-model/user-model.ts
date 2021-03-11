@@ -42,9 +42,12 @@ const userSchema: Schema = new Schema(
             type: Boolean,
             required: true
         },
-        name: {
+        userName: {
             type: String,
             required: true
+        },
+        organization:{
+            type: String
         },
         verified: {
             type: Boolean,

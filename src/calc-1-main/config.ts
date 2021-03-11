@@ -1,7 +1,5 @@
 import dotenv from 'dotenv';
 
-
-
 export const DEV_VERSION = false
 
 DEV_VERSION && dotenv.config()
