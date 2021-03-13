@@ -29,7 +29,7 @@ exports.isWithPallet = (req, res, user) => __awaiter(void 0, void 0, void 0, fun
             error_result_1.errorStatus400(res, 'not updated, bad request.../withPallet/findByIdAndUpdate', 404, { withPallet, currentPaymentId });
         else {
             cookie_1.resCookie(res, user);
-            success_result_1.successResult(res, 'update cargo(s) value success!', 200, { withPallet });
+            success_result_1.successResult(res, 'update cargo(s) value success!', 200, withPallet);
         }
     }
     catch (err) {

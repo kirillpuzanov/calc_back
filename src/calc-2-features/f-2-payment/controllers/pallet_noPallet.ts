@@ -16,7 +16,7 @@ export const isWithPallet = async (req: Request, res: Response,user: IUser) => {
         if (!updatePackagingCargo) errorStatus400(res, 'not updated, bad request.../withPallet/findByIdAndUpdate', 404, {withPallet, currentPaymentId})
         else {
             resCookie(res, user)
-            successResult(res, 'update cargo(s) value success!', 200,  {withPallet})
+            successResult(res, 'update cargo(s) value success!', 200,  withPallet)
         }
     } catch (err) {
         errorStatus500(res, err,'in withPallet/findByIdAndUpdate')
